@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">  <head>
+    <title>Homework 3</title>
+    <style type="text/css"  id="internalStyle">
+      body { background-color: white }
+      h1 { text-align: center }
+      .button { border: thin solid; }
+      span { padding: 1px; }
+      li { padding-top: 2px; padding-bottom: 2px; }
+    </style>
+  </head>
+  <body>
+    <h1>Homework 3</h1>
+
+    <ul>
+      <li><span class="button">Click here</span> to expand the list</li>
+      <li><span class="button">And now for something completely
+	different&hellip;</span></li>
+    </ul>
+
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script>
+      $('h1').hover(
+      function() {
+          $('.button').css('background-color', 'aqua');
+          $('h1').bind('mouseout', function(){
+              $('.button').css('background-color', 'white');
+          });
+      });
+      
+      $('li:nth-child(1) > span').on('click', function(){
+               //alert('hi bub!');
+          $(this).parent().not(':has(ul)').append('<ul><li id="buttonplace"></li></ul>');
+               
+          $('#buttonplace').append('<input type="button" value="Delete Me!"/>');
+          $('#buttonplace :last-child').on('click', function(){
+              $(this).remove();
+          });
+          
+           });
+        $('li:nth-child(2) > span').on('click', function(){
+            $(this).replaceWith('<span style="color: LimeGreen; background-color: black">Nobody expects the Spanish Inquisition!</span>')
+        });
+       
+     
+        
+    </script>
+</body></html>
